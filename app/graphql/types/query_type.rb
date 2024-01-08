@@ -29,7 +29,7 @@ module Types
       body_part: "Chest",
       created_at: "2020-11-11 00:00:00",
       updated_at: "2020-11-11 00:00:00",
-      img_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Bench_press_3.jpg/220px-Bench_press_3.jpg"
+      img_url: "https://www.shutterstock.com/image-illustration/closegrip-barbell-bench-press-3d-260nw-430936051.jpg"
     )
 
     # TODO: remove me
