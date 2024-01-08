@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  exercise: one
+  date: 2024-01-07
+  sets: 1
+  reps_per_set: MyString
+  weight_per_set: MyString
+  notes: MyText
+
+two:
+  user: two
+  exercise: two
+  date: 2024-01-07
+  sets: 1
+  reps_per_set: MyString
+  weight_per_set: MyString
+  notes: MyText
