@@ -12,6 +12,12 @@ module Workouts
         workout = Workouts::Workout.new
         
         assert_equal [], workout.exercises
+    end
+
+    test 'adds exercise to workout' do
+        workout = Workouts::Workout.new
+        
+        assert_equal [], workout.exercises
 
         ::Exercise.create!(title: "Bench Press")
 
@@ -20,12 +26,6 @@ module Workouts
 
         assert_equal 1, workout.exercises.length
     end
-
-    # test 'should remove an exercise' do
-    #   @workout.add_exercise(@exercise_id, @goal)
-    #   @workout.remove_exercise(@exercise_id)
-    #   assert @workout.exercises.empty?
-    # end
 
     # test 'should update an existing exercise' do
     #   @workout.add_exercise(@exercise_id, @goal)
