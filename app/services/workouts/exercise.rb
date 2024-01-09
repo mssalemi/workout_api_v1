@@ -5,12 +5,15 @@ module Workouts
         extend T::Sig
     
         sig { returns(String) }
-        attr_accessor :exercise_id, :id
+        attr_accessor :id
+
+        sig { returns(Integer) }
+        attr_accessor :exercise_id
     
         sig { returns(T::Hash[Symbol, Integer]) }
         attr_accessor :goal
     
-        sig { params(exercise_id: String, goal: T::Hash[Symbol, Integer]).void }
+        sig { params(exercise_id: Integer, goal: T::Hash[Symbol, Integer]).void }
         def initialize(exercise_id:, goal:)
             raise "Invalid goal" unless validate_exercise_goal?(goal)
             @id = T.let(SecureRandom.uuid, String)
