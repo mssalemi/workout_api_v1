@@ -17,17 +17,17 @@ module Workouts
       @exercises << exercise
     end
 
-    sig { params(workout_exercise_id: Integer).void }
+    sig { params(workout_exercise_id: String).void }
     def remove_exercise(workout_exercise_id:)
       @exercises.reject! { |exercise| exercise.exercise_id == workout_exercise_id }
     end
 
     sig { params(workout_exercise_id: String, goal: T::Hash[Symbol, Integer]).void }
-    def update_exercise(workout_exercise_id:, goal: nil)
+    def update_exercise(workout_exercise_id:, goal:)
       exercise = find_exercise(workout_exercise_id: workout_exercise_id)
       return unless exercise
 
-      exercise.goal = goal if goal
+      exercise.update_goal(goal: goal)
 
       exercise
     end
