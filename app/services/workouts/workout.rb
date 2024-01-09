@@ -6,17 +6,16 @@ module Workouts
         @exercises = []
       end
   
-      def add_exercise(exercise_id, goal)
-        exercise = Workouts::Exercise.new(exercise_id, goal)
+      def add_exercise(exercise:)
         @exercises << exercise
       end
   
-      def remove_exercise(exercise_id)
+      def remove_exercise(exercise_id:)
         @exercises.reject! { |exercise| exercise.exercise_id == exercise_id }
       end
   
-      def update_exercise(exercise_id, goal: nil)
-        exercise = find_exercise(exercise_id)
+      def update_exercise(exercise_id:, goal: nil)
+        exercise = find_exercise(exercise_id: exercise_id)
         return unless exercise
   
         exercise.goal = goal if goal
@@ -24,7 +23,7 @@ module Workouts
       
       private
 
-      def find_exercise(exercise_id)
+      def find_exercise(exercise_id:)
         @exercises.find { |exercise| exercise.exercise_id == exercise_id }
       end
     end

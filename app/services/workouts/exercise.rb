@@ -1,31 +1,33 @@
 module Workouts
     class Exercise
-        attr_accessor :exercise, :goal
+        attr_accessor :exercise_id, :goal
 
         def initialize(exercise_id:, goal:)
             raise "Invalid goal" unless validate_exercise_goal?(goal)
 
-            exercise = ::Exercise.find(exercise_id)
-            raise "Exercise not found" unless exercise
-
-            @exercise = exercise
+            @exercise_id = exercise_id
             @goal = goal
             @completed = false
+            @exercise_history_id = nil
         end
 
         def complete(user_id:, actual_reps:, actual_weight:, actual_repeats:)
+            exercise = ::Exercise.find(exercise_id)
+
+            raise "Exercise not found" unless exercise
+
             history = ExerciseHistory.create!(
               user_id: user_id,
-              exercise_id: @exercise.id,
-              date: Date.today,  # Assuming completion date is current date
+              exercise_id: exercise.id,
+              date: Date.today,
               reps: actual_reps,
               weight: actual_weight,
               repeats: actual_repeats,
-              # You can include additional fields as necessary
             )
 
             @completed = true
-
+            @exercise_history_id = history.id
+            
             history
           end
 
