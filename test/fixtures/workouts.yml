@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  template_id: 1
+  date: 2024-01-08
+  user: one
+
+two:
+  template_id: 1
+  date: 2024-01-08
+  user: two

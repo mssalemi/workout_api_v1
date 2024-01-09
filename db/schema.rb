@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_08_013315) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_09_012015) do
   create_table "exercise_histories", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "exercise_id", null: false
@@ -21,8 +21,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_08_013315) do
     t.integer "reps"
     t.integer "repeats"
     t.integer "weight"
+    t.integer "workout_id", null: false
     t.index ["exercise_id"], name: "index_exercise_histories_on_exercise_id"
     t.index ["user_id"], name: "index_exercise_histories_on_user_id"
+    t.index ["workout_id"], name: "index_exercise_histories_on_workout_id"
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -42,6 +44,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_08_013315) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "workouts", force: :cascade do |t|
+    t.integer "template_id"
+    t.date "date"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_workouts_on_user_id"
+  end
+
   add_foreign_key "exercise_histories", "exercises"
   add_foreign_key "exercise_histories", "users"
+  add_foreign_key "exercise_histories", "workouts"
+  add_foreign_key "workouts", "users"
 end
