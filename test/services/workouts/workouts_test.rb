@@ -1,3 +1,5 @@
+# typed: strict
+
 require 'test_helper'
 
 module Workouts
@@ -14,7 +16,7 @@ module Workouts
         assert_equal [], workout.exercises
     end
 
-    test 'adds exercise to workout' do
+    test 'adds exercise to workout and updates properties' do
         workout = Workouts::Workout.new
         
         assert_equal [], workout.exercises
@@ -25,22 +27,12 @@ module Workouts
         workout.add_exercise(exercise: exercise)
 
         assert_equal 1, workout.exercises.length
+
+        new_goal = { reps: 1, weight: 315, repeats: 1 }
+
+        workout.update_exercise(workout_exercise_id: exercise.id, goal: new_goal)
+
+        assert_equal new_goal, workout.exercises.first.goal
     end
-
-    # test 'should update an existing exercise' do
-    #   @workout.add_exercise(@exercise_id, @goal)
-    #   new_goal = { reps: 15, weight: 55, repeats: 4 }
-    #   @workout.update_exercise(@exercise_id, goal: new_goal)
-    #   updated_exercise = @workout.exercises.first
-    #   assert_equal new_goal, updated_exercise.goal
-    # end
-
-    # test 'should not update a non-existent exercise' do
-    #   non_existent_id = 999
-    #   @workout.add_exercise(@exercise_id, @goal)
-    #   initial_exercises = @workout.exercises.dup
-    #   @workout.update_exercise(non_existent_id, goal: { reps: 20 })
-    #   assert_equal initial_exercises, @workout.exercises
-    # end
   end
 end

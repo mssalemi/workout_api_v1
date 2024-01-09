@@ -105,3 +105,11 @@ aggregated_data = service.aggregate_exercise_history(
   end_date: Date.new(2022, 12, 31)
 )
 ```
+
+### Sorbet
+
+generate type files
+
+```shell
+bundle exec srb tc
+```
