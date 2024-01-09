@@ -8,7 +8,6 @@ module Workouts
     end
 
     test 'initializes an exercise with given attributes' do
-      debugger
       workout_exercise = Workouts::Exercise.new(exercise_id: @exercise.id, goal: @goal)
 
       assert workout_exercise
